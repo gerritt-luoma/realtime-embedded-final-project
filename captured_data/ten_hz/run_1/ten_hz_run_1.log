@@ -1,13 +1,3 @@
-Jul 28 19:33:27 arthur sshd[213185]: pam_unix(sshd:session): session closed for user gerritt
-Jul 28 19:33:27 arthur systemd-logind[467]: Session 3662 logged out. Waiting for processes to exit.
-Jul 28 19:33:27 arthur systemd[1]: session-3662.scope: Deactivated successfully.
-Jul 28 19:33:27 arthur systemd-logind[467]: Removed session 3662.
-Jul 28 19:33:48 arthur sudo[213247]:  gerritt : TTY=pts/0 ; PWD=/home/gerritt/repos/realtime-embedded-final-project ; USER=root ; COMMAND=/usr/bin/make clean
-Jul 28 19:33:48 arthur sudo[213247]: pam_unix(sudo:session): session opened for user root(uid=0) by gerritt(uid=1000)
-Jul 28 19:33:48 arthur sudo[213247]: pam_unix(sudo:session): session closed for user root
-Jul 28 19:33:57 arthur sudo[213258]:  gerritt : TTY=pts/0 ; PWD=/home/gerritt/repos/realtime-embedded-final-project ; USER=root ; COMMAND=/usr/bin/make
-Jul 28 19:33:57 arthur sudo[213258]: pam_unix(sudo:session): session opened for user root(uid=0) by gerritt(uid=1000)
-Jul 28 19:33:59 arthur sudo[213258]: pam_unix(sudo:session): session closed for user root
 Jul 28 19:34:14 arthur sudo[213271]:  gerritt : TTY=pts/0 ; PWD=/home/gerritt/repos/realtime-embedded-final-project ; USER=root ; COMMAND=./capture 1 1 1
 Jul 28 19:34:14 arthur sudo[213271]: pam_unix(sudo:session): session opened for user root(uid=0) by gerritt(uid=1000)
 Jul 28 19:34:15 arthur kernel: usb 1-1.1: reset high-speed USB device number 3 using xhci_hcd

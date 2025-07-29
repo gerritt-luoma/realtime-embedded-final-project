@@ -1,13 +1,3 @@
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE END 1801861.021351
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE DUR 0.002321
-Jul 28 19:45:41 arthur capture[219097]: SEQ DETECT START 1801861.021561
-Jul 28 19:45:41 arthur capture[219097]: SEQ DETECT END 1801861.022356
-Jul 28 19:45:41 arthur capture[219097]: SEQ DETECT DUR 0.000795
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE POST 1801861.052283377
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE START 1801861.052389
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE END 1801861.054747
-Jul 28 19:45:41 arthur capture[219097]: SEQ CAPTURE DUR 0.002358
-Jul 28 19:45:41 arthur sudo[219095]: pam_unix(sudo:session): session closed for user root
 Jul 28 19:46:07 arthur sudo[219105]:  gerritt : TTY=pts/0 ; PWD=/home/gerritt/repos/realtime-embedded-final-project ; USER=root ; COMMAND=./capture 1 1 1
 Jul 28 19:46:07 arthur sudo[219105]: pam_unix(sudo:session): session opened for user root(uid=0) by gerritt(uid=1000)
 Jul 28 19:46:07 arthur kernel: usb 1-1.1: reset high-speed USB device number 3 using xhci_hcd
