@@ -26,9 +26,9 @@ def process_entries(entries):
             durations = [val for tag, val in events if tag == "DUR"]
             if durations:
                 results[prefix] = {
-                    'dur_best': min(durations),
-                    'dur_worst': max(durations),
-                    'dur_avg': mean(durations),
+                    'dur_best': min(durations) * 1000,
+                    'dur_worst': max(durations) * 1000,
+                    'dur_avg': mean(durations) * 1000,
                     'count': len(durations),
                     'type': 'dur_only'
                 }
@@ -36,15 +36,18 @@ def process_entries(entries):
             i = 0
             post_start_deltas = []
             durations = []
+            total_deltas = []
 
             while i < len(events) - 3:
                 tags = [events[i + j][0] for j in range(4)]
                 if tags == ['POST', 'START', 'END', 'DUR']:
                     post_time = events[i][1]
                     start_time = events[i + 1][1]
+                    end_time = events[i + 2][1]
                     dur_time = events[i + 3][1]
 
                     post_start_deltas.append(start_time - post_time)
+                    total_deltas.append(end_time - post_time)
                     durations.append(dur_time)
                     i += 4
                 else:
@@ -52,12 +55,15 @@ def process_entries(entries):
 
             if post_start_deltas:
                 results[prefix] = {
-                    'post_start_best': min(post_start_deltas),
-                    'post_start_worst': max(post_start_deltas),
-                    'post_start_avg': mean(post_start_deltas),
-                    'dur_best': min(durations),
-                    'dur_worst': max(durations),
-                    'dur_avg': mean(durations),
+                    'post_start_best': min(post_start_deltas) * 1000,
+                    'post_start_worst': max(post_start_deltas) * 1000,
+                    'post_start_avg': mean(post_start_deltas) * 1000,
+                    'dur_best': min(durations) * 1000,
+                    'dur_worst': max(durations) * 1000,
+                    'dur_avg': mean(durations) * 1000,
+                    'total_best': min(total_deltas) * 1000,
+                    'total_worst': max(total_deltas) * 1000,
+                    'total_avg': mean(total_deltas) * 1000,
                     'count': len(post_start_deltas),
                     'type': 'full'
                 }
@@ -69,19 +75,24 @@ def print_results(results):
         print(f"\n=== Stats for {prefix} ({stats['count']} entries) ===")
         if stats['type'] == 'dur_only':
             print(f"DUR durations:")
-            print(f"  Best : {stats['dur_best']:.9f} s")
-            print(f"  Worst: {stats['dur_worst']:.9f} s")
-            print(f"  Avg  : {stats['dur_avg']:.9f} s")
+            print(f"  Best : {stats['dur_best']:.9f} ms")
+            print(f"  Worst: {stats['dur_worst']:.9f} ms")
+            print(f"  Avg  : {stats['dur_avg']:.9f} ms")
         else:
             print(f"Post → Start delay:")
-            print(f"  Best : {stats['post_start_best']:.9f} s")
-            print(f"  Worst: {stats['post_start_worst']:.9f} s")
-            print(f"  Avg  : {stats['post_start_avg']:.9f} s")
+            print(f"  Best : {stats['post_start_best']:.9f} ms")
+            print(f"  Worst: {stats['post_start_worst']:.9f} ms")
+            print(f"  Avg  : {stats['post_start_avg']:.9f} ms")
 
             print(f"DUR durations:")
-            print(f"  Best : {stats['dur_best']:.9f} s")
-            print(f"  Worst: {stats['dur_worst']:.9f} s")
-            print(f"  Avg  : {stats['dur_avg']:.9f} s")
+            print(f"  Best : {stats['dur_best']:.9f} ms")
+            print(f"  Worst: {stats['dur_worst']:.9f} ms")
+            print(f"  Avg  : {stats['dur_avg']:.9f} ms")
+
+            print(f"Post → Finish total:")
+            print(f"  Best : {stats['total_best']:.9f} ms")
+            print(f"  Worst: {stats['total_worst']:.9f} ms")
+            print(f"  Avg  : {stats['total_avg']:.9f} ms")
 
 def main():
     if len(sys.argv) != 2:
